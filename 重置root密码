@@ -6,7 +6,7 @@ mount -o remount,rw /sysroot    //-o表示异步执行
 chroot /sysroot
     #修改密码
     passwd
-    #让SELinux生效
+    #让SELinux生效(SELinux是一个Linux的内核模块，也是Linux的一个安全子系统)
     touch /.autorelable
     exit
 reboot
