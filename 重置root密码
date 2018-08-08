@@ -1,0 +1,12 @@
+开机或者重启linux，进入引导界面时，按e;
+在linux16这一行末尾加上rd.break参数，然后按Ctrl+x运行修改过的内核程序；
+#重新挂载根目录，并赋予读写权限
+mount -o remount,rw /sysroot    //-o表示异步执行
+#改变程序运行的根目录
+chroot /sysroot
+    #修改密码
+    passwd
+    #让SELinux生效
+    touch /.autorelable
+    exit
+reboot
