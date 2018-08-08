@@ -1,2 +1,17 @@
-Linux操作系统的开机过程，从BIOS开始，然后进入Boot Loader，再加载系统内核，然后进行内核初始化，最后启动初始化进程。
-初始化进程是Linux系统的第一个进程。
+#Linux操作系统的开机过程，从BIOS开始，然后进入Boot Loader，再加载系统内核，然后进行内核初始化，最后启动初始化进程。
+#初始化进程是Linux系统的第一个进程。
+
+#区别（systemctl命令中，服务名后面的.service可以省略）
+system V init命令（RHEL6系统)   systemctl命令（RHEL7系统）                     作用
+service servicename start     systemctl start servicename.service          启动服务
+service servicename restart   systemctl restart servicename.service        重启服务
+service servicename stop      systemctl stop servicename.service           停止服务
+service servicename reload    systemctl reload servicename.service         重新加载配置文件（不终止服务）
+service servicename status    systemctl status servicename.service         查看服务状态
+
+#systemctl设置服务开机启动、不启动、查看各级别下服务启动状态等命令
+system V init命令（RHEL6系统)    systemctl命令（RHEL7系统）                     作用
+chkconfig servicename on       systemctl enable servicername.service        开机自启动
+chkconfig servicename off      systemctl disable servicername.service       开机不自启动
+chkconfig servicename          systemctl is_enable servicername.service     查看特定服务是否为开机自启动
+chkconfig --list               systemctl list-unit-files --type=service     查看各个级别下服务的启动与禁用情况
